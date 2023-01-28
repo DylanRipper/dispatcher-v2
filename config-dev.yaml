@@ -1,0 +1,62 @@
+server:
+  rest: "127.0.0.1:20001"
+
+# server_core:
+  # url: "https://core.aci.id/b1/biaya/pendapatan-driver"
+  # url_polyline: "https://core.aci.id/s1/direction"
+  # url_refund: "https://payment.aci.id/trx/refund"
+#  url: "https://sandbox-bimajek.bmsecure.id/b1/biaya/pendapatan-driver"
+
+server_core:
+  url: "https://sandbox-aci-core.bmsecure.id/b1/biaya/pendapatan-driver"
+  url_polyline: "https://sandbox-aci-core.bmsecure.id/s1/direction"
+  url_refund: "https://sandbox-aci-payment.bmsecure.id/trx/refund"
+
+fcm:
+  token: "AAAATjQEQQY:APA91bHxSZHTWVsy_a8YBpj4UlsNa34xVtCeDb3aNeanAj7dBomUtnyLtNRrfNB_tJodffWDwmmVqYQx8U7IExr4Lzy9O9n7SbacJNDMSMKvVLm40ivWe95uJ2O8wj7RrBnKfiQ0MsKQ"
+  # token: "AAAANOhvGP4:APA91bESD0WNVsa4xSwDwRT6sRTPVHozy67N3wUSmK_2LfSKwdfBC7ckv9sk4PZHtLFIVc7vXHowm5AYylMu70NKQxlWfpxQSqQ7bKb284luCcAu8N5StNmHAsEmc5eIzSnlxPTdEhmi"
+
+database:
+  driver: "postgresql"
+  host: "34.101.167.200"
+  # host: "34.101.204.40"
+  port: 5432
+  username: "rabbitmq_service"
+  password: "rabbitviu"
+  # password: "r412abbit&viu..1T"
+  dbname: "viuit_core_devel"
+  dbname_merchant: "viuit_merchant_devel"
+  dbname_user: "viuit_user_devel"
+  # dbname: "aci_core_prod"
+  # dbname_merchant: "aci_merchant_prod"
+  # dbname_user: "viuit_user_prod"
+  pool_size: 100
+
+app_config:
+  limit_get_order: 100
+  max_pool_worker: 100
+  max_radius: 4
+  min_radius: 0
+  version_code: 63
+  api_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2FnZSI6IlZpdWl0IEJFIiwidXNlcl9pZCI6IjMiLCJwYXJ0bmVyX2lkIjoiMSIsInRpcGUiOiJnbG9iYWwiLCJub19ocCI6IjA4MjMzNDI1MDI5OCIsImNyZWF0ZWRfYnkiOiIyMDIxLTEyLTEwIDEwOjA2OjA1In0.tRfL6DX3YciMphDop0P-dJ7r2HmvAvx_sc7MrXs56-0"
+
+cache:
+  driver: "redis"
+  addr: localhost:6379
+  password: ""
+  database: 0
+  pool_size: 100
+
+message_broker:
+  driver: "rabbitmq"
+  uri: "amqp://admin:root123@34.101.167.200:5672/"
+  queue_name: "driver.latlon"
+  # uri: "amqp://acidriver:ini4d4lahpassword123acidriv3r@34.101.172.254:5672/"
+  mssg_expired: "21600000"
+#  exchange: "mailer"
+#  routekey: "mailer.key"
+
+logger:
+  path: "logs/bimajek_dispatch.log"
+  max_age: 7 # in day --> delete if older than x day
+  rotation_time: 1 # in day --> split file per x day
